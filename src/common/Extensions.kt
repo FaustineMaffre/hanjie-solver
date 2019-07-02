@@ -1,5 +1,7 @@
 package common
 
+import kotlin.math.max
+
 /**
  * Returns true if the sequence contains elements that are all equal.
  */
@@ -10,4 +12,4 @@ fun <T> Iterable<T>.allEquals(): Boolean = this.distinct().size <= 1
  * at the end such that its length is [nbChars]; otherwise returns the same string (without
  * truncating it).
  */
-fun String.completeWithSpaces(nbChars: Int): String = this + " ".repeat(Math.max(nbChars - this.length, 0))
+fun String.completeWithSpaces(nbChars: Int): String = this + " ".repeat(max(nbChars - this.length, 0))
