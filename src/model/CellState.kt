@@ -15,27 +15,25 @@ enum class CellState constructor(private var symbol: String) {
     companion object {
 
         /**
-         * Generates the array of cells from a list of arrays such that, for each cell:
+         * Generates the array of cells from a list of states such that, for each cell:
          * - if the corresponding cell in each array contains the same value,
          * the final cell contains this value;
          * - the final cell contains undecided value otherwise.
          */
-        fun intersectionStates(arrays: List<Array<CellState>>): Array<CellState> {
-            require(arrays.isNotEmpty())
+        fun makeIntersectionOfStates(states: List<Array<CellState>>): Array<CellState> {
+            require(states.isNotEmpty())
 
-            val sizes = arrays.map { a -> a.size }
+            val sizes = states.map { a -> a.size }
             require(sizes.allEquals())
 
             val size = sizes[0]
-            val res = Array(size) { UNDECIDED }
 
-            (0 until size).forEach { i ->
-                if(arrays.map { it[i] }.allEquals()) {
-                    res[i] = arrays[0][i] // if all equals, take the value from any array
+            return Array(size) { i ->
+                when {
+                    states.map { state -> state[i] }.allEquals() -> states[0][i] // if all equals, take the value from any array
+                    else -> CellState.UNDECIDED // else undecided
                 }
             }
-
-            return res
         }
     }
 }

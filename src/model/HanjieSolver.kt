@@ -145,7 +145,7 @@ object HanjieSolver {
                 } else {
                     // find the intersection of possible states of the row
                     val intersectionPossibleStates =
-                            CellState.intersectionStates(hanjie.rowDescriptions[i].possibleStates)
+                            CellState.makeIntersectionOfStates(hanjie.rowDescriptions[i].possibleStates)
 
                     // set it to the row (removing now impossible states), tracking updates
                     if(setRow(hanjie, i, intersectionPossibleStates)) {
@@ -163,7 +163,7 @@ object HanjieSolver {
                 } else {
                     // find the intersection of possible states of the column
                     val intersectionPossibleStates =
-                            CellState.intersectionStates(hanjie.columnDescriptions[j].possibleStates)
+                            CellState.makeIntersectionOfStates(hanjie.columnDescriptions[j].possibleStates)
 
                     // set it to the column (removing now impossible states), tracking updates
                     if(setColumn(hanjie, j, intersectionPossibleStates)) {
