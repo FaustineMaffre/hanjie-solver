@@ -133,7 +133,7 @@ object HanjieSolver {
         var wasUpdated = true
 
         // until we cannot progress anymore
-        while(wasUpdated) {
+        while(wasUpdated && isSolvable) {
             wasUpdated = false
 
             // rows
